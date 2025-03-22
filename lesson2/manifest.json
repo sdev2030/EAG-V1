@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Random Text Translator",
+    "version": "1.0",
+    "description": "Translate random text on a webpage from English to French.",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_title": "Random Text Translator"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "host_permissions": [
+        "https://generativelanguage.googleapis.com/*"
+    ]
+}
