@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Fibonacci Exponential Sum Calculator",
+    "version": "1.0",
+    "description": "Calculate sum of exponentials of Fibonacci numbers using Gemini AI",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+}
