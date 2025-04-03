@@ -211,8 +211,8 @@ async def draw_rectangle(x1: int, y1: int, x2: int, y2: int) -> dict:
         }
 
 @mcp.tool()
-async def add_text_in_paint(text: str) -> dict:
-    """Add text in Paint"""
+async def add_text_in_paint(x1: int, y1: int, x2: int, y2: int, text: str) -> dict:
+    """Draw a text box in Paint from (x1,y1) to (x2,y2), Add text in Paint"""
     global paint_app
     try:
         if not paint_app:
@@ -235,23 +235,23 @@ async def add_text_in_paint(text: str) -> dict:
         # Get primary monitor width to adjust coordinates
         primary_width = GetSystemMetrics(0)
 
-        # Click on the Rectangle tool
+        # Click on the text tool
         paint_window.click_input(coords=(290, 72))
         time.sleep(0.2)
         
         # Get the canvas area
         canvas = paint_window.child_window(class_name='MSPaintView')
         
-        # Select text tool using keyboard shortcuts
+        # Select text tool using keyboard shortcuts (not working in windows 10)
         # paint_window.type_keys('t')
         # time.sleep(0.5)
         # paint_window.type_keys('x')
         # time.sleep(0.5)
         
         # Click where to start typing
-        canvas.press_mouse_input(coords=(645+primary_width, 435))
-        canvas.move_mouse_input(coords=(705+primary_width, 485))
-        canvas.release_mouse_input(coords=(705+primary_width, 485))
+        canvas.press_mouse_input(coords=(x1+primary_width, y1))
+        canvas.move_mouse_input(coords=(x2+primary_width, y2))
+        canvas.release_mouse_input(coords=(x2+primary_width, y2))
         # canvas.click_input(coords=(645+primary_width, 435))
         time.sleep(0.2)
         
