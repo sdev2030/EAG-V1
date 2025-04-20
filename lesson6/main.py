@@ -10,7 +10,7 @@ from decision import Decision
 from action import Action
 from models import ToolDescription
 
-async def main():
+async def main(user_preference: str):
     # Load environment variables
     load_dotenv()
     api_key = os.getenv("GEMINI_API_KEY")
@@ -55,7 +55,7 @@ async def main():
                 
                 # Create system prompt using tool descriptions
                 tools_description = decision.format_tools_description()
-                perception.create_system_prompt(tools_description)
+                perception.create_system_prompt(tools_description, user_preference)
 
                 print(perception.system_prompt)
                 
@@ -109,4 +109,5 @@ async def main():
         memory.reset()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    user_preference = input("What is your preference for displaying final answer? → ")
+    asyncio.run(main(user_preference))

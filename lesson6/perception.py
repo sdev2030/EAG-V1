@@ -10,11 +10,21 @@ class Perception:
         self.client = genai.Client(api_key=api_key)
         self.system_prompt = None
     
-    def create_system_prompt(self, tools_description: str):
+    def create_system_prompt(self, tools_description: str, user_preference: str):
         """Create the system prompt using tool descriptions"""
         self.system_prompt = f"""You are a math agent solving problems in iterations. You have access to various mathematical tools.
 
-Available tools:
+REASONING PROCESS:
+1. ALWAYS think step-by-step before making any function calls
+2. Break down complex problems into simpler sub-problems
+3. For each step, explicitly state your reasoning BEFORE selecting a tool
+4. After each function call, verify the result makes sense by checking:
+   - Is the output within expected ranges?
+   - Does it match simple mental calculations?
+   - Are units and dimensions consistent?
+5. If a verification fails, reconsider your approach and try again
+6. Tag each reasoning step with [REASONING] and each verification step with [VERIFICATION]
+
 {tools_description}
 
 You must respond with EXACTLY ONE line in one of these formats (no additional text):
@@ -34,6 +44,8 @@ CRITICAL:
 - You MUST use the EXACT field names from the tool descriptions
 - For example, if a tool requires "int_list", you must use "int_list" not "numbers" or other variations
 - Some tools like "open_paint" don't take any parameters, use empty params for them
+- Always perform self-verification checks after each computation
+- If uncertain about a result, recalculate or use alternative methods to confirm
 
 IMPORTANT JSON FORMATTING RULES:
 - Always use double quotes for property names and string values
@@ -45,6 +57,7 @@ CRITICAL TOOL USAGE:
 - Use exact field names from tool descriptions
 - For open_paint use: FUNCTION_CALL: {{"function": "open_paint", "params": {{}}}}
 - If a tool fails, report the error and try an alternative approach
+- {user_preference}
 
 Examples:
 - FUNCTION_CALL: {{"function": "add", "params": {{"input": {{"a": 5, "b": 3}}}}}}
