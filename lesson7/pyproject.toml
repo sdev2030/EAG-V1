@@ -1,0 +1,18 @@
+[project]
+name = "lesson7"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "faiss-cpu>=1.10.0",
+    "flask>=3.1.0",
+    "flask-cors>=5.0.1",
+    "genai>=2.1.0",
+    "google-genai>=1.13.0",
+    "markitdown[all,pdf]>=0.1.1",
+    "mcp>=1.6.0",
+    "pillow>=11.2.1",
+    "selenium>=4.31.0",
+    "tqdm>=4.67.1",
+]
