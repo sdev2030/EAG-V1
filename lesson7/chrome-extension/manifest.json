@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "FAISS Query Finder",
+  "version": "1.0",
+  "description": "Finds the URL for a query using FAISS index.",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+} 

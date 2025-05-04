@@ -43,7 +43,7 @@ Guidelines:
 - Respond using EXACTLY ONE of the formats above per step.
 - Do NOT include extra text, explanation, or formatting.
 - Use nested keys (e.g., input.string) and square brackets for lists.
-- Include Source and Id in FINAL_ANSWER if using search_documents tool
+- Include Source and ID in FINAL_ANSWER
 - You can reference these relevant memories:
 {memory_texts}
 
@@ -60,10 +60,10 @@ Input Summary:
 - FINAL_ANSWER: [42]
 
 ✅ Examples:
-- User asks: "What’s the relationship between Cricket and Sachin Tendulkar"
-  - FUNCTION_CALL: search_documents|query="relationship between Cricket and Sachin Tendulkar"
+- User asks: "Lady Gaga Concert"
+  - FUNCTION_CALL: search_documents|query="Lady Gaga"
   - [receives a detailed document]
-  - FINAL_ANSWER: [Sachin Tendulkar is widely regarded as the "God of Cricket" due to his exceptional skills, longevity, and impact on the sport in India. He is the leading run-scorer in both Test and ODI cricket, and the first to score 100 centuries in international cricket. His influence extends beyond his statistics, as he is seen as a symbol of passion, perseverance, and a national icon. ]
+  - FINAL_ANSWER: [https://text.npr.org/nx-s1-5386457]
 
 
 IMPORTANT:

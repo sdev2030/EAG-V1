@@ -152,7 +152,9 @@ def find_url_for_query(query):
         sys.stdout = old_stdout
         output = mystdout.getvalue()
         # Try to extract a URL from FINAL_ANSWER or output
+        log("find_url", f"output is {output}")
         url_match = re.search(r'(https?://[^\s\'"<>]+)', output)
+        log("URL: ", f"{url_match}")
         if url_match:
             url = url_match.group(1).rstrip('.,);:!?\'"')
             result_holder['url'] = url
