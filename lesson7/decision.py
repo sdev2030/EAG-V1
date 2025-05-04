@@ -43,6 +43,7 @@ Guidelines:
 - Respond using EXACTLY ONE of the formats above per step.
 - Do NOT include extra text, explanation, or formatting.
 - Use nested keys (e.g., input.string) and square brackets for lists.
+- Include Source and Id in FINAL_ANSWER if using search_documents tool
 - You can reference these relevant memories:
 {memory_texts}
 

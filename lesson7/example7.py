@@ -73,7 +73,7 @@ def save_faiss_resources(index, metadata, cache_meta, index_file_path, metadata_
 
 @mcp.tool()
 def search_documents(query: str) -> list[str]:
-    """Search for relevant content from uploaded documents."""
+    """Search for relevant content from indexed URLs."""
     ensure_faiss_ready()
     mcp_log("SEARCH", f"Query: {query}")
     try:

@@ -16,7 +16,7 @@ import sys
 
 def log(stage: str, msg: str):
     now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] [{stage}] {msg}")
+    print(f"[{now}] [{stage}] {msg}",  file=sys.stderr, flush=True)
 
 max_steps = 3
 
@@ -164,6 +164,7 @@ def find_url_for_query(query):
 
 @app.route('/search', methods=['POST'])
 def search():
+    log("flask", "Received /search request")
     data = request.get_json()
     query = data.get('query', '')
     if not query:
